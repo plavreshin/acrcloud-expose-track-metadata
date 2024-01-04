@@ -1,0 +1,50 @@
+{
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./"
+  },
+  "plugins": ["formatjs", "prefer-arrow-functions", "@typescript-eslint", "simple-import-sort"],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "jest": true
+  },
+  "extends": ["eslint:recommended", "standard", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "no-console": "error",
+    "prettier/prettier": ["error"],
+    "formatjs/no-offset": "error",
+    "formatjs/enforce-default-message": ["error", "literal"],
+    "camelcase": "warn",
+    "formatjs/enforce-placeholders": "error",
+    "prefer-arrow-functions/prefer-arrow-functions": "error",
+    "node/handle-callback-err": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      }
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "prefer-const": "error",
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "String": {
+            "message": "Use string instead",
+            "fixWith": "string"
+          },
+          "{}": {
+            "message": "Use Record<type, type> instead",
+            "fixWith": "object"
+          }
+        }
+      }
+    ],
+    "curly": "error"
+  }
+}

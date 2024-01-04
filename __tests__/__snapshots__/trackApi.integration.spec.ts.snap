@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`trackApi should delete track 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "deleteTrack": true,
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`trackApi should get validation error when track is not found 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "getTrackById": null,
+      },
+      "errors": [
+        {
+          "extensions": {
+            "code": "NotFound",
+          },
+          "locations": [
+            {
+              "column": 3,
+              "line": 3,
+            },
+          ],
+          "message": "No track found for 1",
+          "path": [
+            "getTrackById",
+          ],
+        },
+      ],
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`trackApi should return existing all tracks successfully 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "getAllTracks": [
+          {
+            "artistName": "artistName",
+            "id": 1,
+            "name": "name",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`trackApi should return single track successfully 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "getTrackById": {
+          "artistName": "artistName",
+          "id": 1,
+          "name": "name",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`trackApi should return track by name and artist successfully 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "getTrackByNameAndArtist": [
+          {
+            "artistName": "artistName",
+            "createdAt": 2024-01-04T16:37:35.598Z,
+            "duration": 1,
+            "id": 1,
+            "isrc": "isrc",
+            "name": "name",
+            "releaseDate": "2024-01-01",
+            "updatedAt": null,
+          },
+        ],
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;
+
+exports[`trackApi should update track name 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "updateTrack": {
+          "name": "name",
+        },
+      },
+      "errors": undefined,
+    },
+  },
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
+  },
+}
+`;

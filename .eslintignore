@@ -1,0 +1,2 @@
+# Ignore generated files
+src/web/__generated__/*

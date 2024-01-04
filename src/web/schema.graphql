@@ -1,0 +1,31 @@
+  scalar DateTime
+  scalar Date
+
+  type Track {
+    id: Int!
+    createdAt: DateTime!
+    updatedAt: DateTime
+    name: String!
+    artistName: String!
+    duration: Int!
+    isrc: String!
+    releaseDate: Date!
+  }
+
+  type Query {
+    getTrackByNameAndArtist(name: String!, artistName: String!): [Track]
+    getAllTracks: [Track]
+    getTrackById(id: Int!): Track
+  }
+
+  type Mutation {
+    updateTrack(
+      id: Int!
+      name: String
+      artistName: String
+      duration: Int
+      isrc: String
+      releaseDate: Date
+    ): Track
+    deleteTrack(id: Int!): Boolean
+  }
