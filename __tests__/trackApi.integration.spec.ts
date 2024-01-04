@@ -8,7 +8,6 @@ import { TrackRepository } from 'src/db/trackRepository';
 import { ArcCloudClient } from 'src/service/client/arcCloudClient';
 import { TrackService } from 'src/service/track/trackService';
 import { Context } from 'src/types/context';
-import { mutations } from 'src/web/resolvers/mutations';
 import { trackQueryResolvers } from 'src/web/resolvers/trackQueries';
 import { Track } from 'src/domain/track';
 import { trackMutationResolvers } from 'src/web/resolvers/trackMutations';
@@ -100,7 +99,7 @@ describe('trackApi', () => {
 
     const server = new ApolloServer<Context>({
       typeDefs: [...scalarTypeDefs, typeDefs],
-      resolvers: [scalarResolvers, mutations, trackQueryResolvers, trackMutationResolvers],
+      resolvers: [scalarResolvers, trackQueryResolvers, trackMutationResolvers],
     });
 
     return server;

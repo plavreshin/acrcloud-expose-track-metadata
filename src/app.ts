@@ -16,7 +16,6 @@ import path from 'path';
 import { log } from './common/logger';
 import { AppConfiguration } from './types/configuration';
 import { AuthPayload, Context } from './types/context';
-import { mutations } from './web/resolvers/mutations';
 import { trackMutationResolvers } from './web/resolvers/trackMutations';
 import { trackQueryResolvers } from './web/resolvers/trackQueries';
 import { getDbClient } from './wiring/persistence';
@@ -38,7 +37,7 @@ export const newApp = async (config: AppConfiguration): Promise<AppAndResources>
 
   const apolloServer = new ApolloServer<Context>({
     typeDefs: [...scalarTypeDefs, typeDefs],
-    resolvers: [scalarResolvers, mutations, trackQueryResolvers, trackMutationResolvers],
+    resolvers: [scalarResolvers, trackQueryResolvers, trackMutationResolvers],
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
   await apolloServer.start();
