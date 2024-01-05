@@ -71,4 +71,27 @@ jobs:
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build
-        run: npm run build
+        run: | 
+          npm run build
+          docker buildx build -t api:local -f Dockerfile .
+  e2e-tests:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    env:
+      ARC_CLOUD_TOKEN: ${{ secrets.ARC_CLOUD_TOKEN }}
+      SECRET_KEY: secret
+    needs: [lint, compile-types]
+    outputs:
+      build_id: ${{ steps.build_id.outputs.BUILD_ID }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Restore node_modules cache
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Install dependencies
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build
+        run: npm run test:e2e

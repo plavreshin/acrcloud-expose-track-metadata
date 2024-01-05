@@ -6,6 +6,7 @@ const jestConfig = {
   moduleNameMapper: {
     '^src/(.*)$': '<rootDir>/src/$1',
   },
+  testPathIgnorePatterns: ['e2e'],
 };
 
 export default jestConfig;

@@ -115,7 +115,7 @@ exports[`trackApi should return track by name and artist successfully 1`] = `
         "getTrackByNameAndArtist": [
           {
             "artistName": "artistName",
-            "createdAt": 2024-01-04T16:37:35.598Z,
+            "createdAt": 2024-01-05T08:59:29.078Z,
             "duration": 1,
             "id": 1,
             "isrc": "isrc",

@@ -86,12 +86,53 @@ curl --request POST \
 There is
 - single unit spec `src/service/client/arcCloudClient.spec.ts`
 - single integration spec `__tests__/trackApi.integration.spec.ts`
+- single e2e spec ``
 
 The goal is to capture implemented resolvers snapshots as baseline hence jest snapshots are used there, see `__tests__/__snapshots__/trackApi.integration.spec.ts.snap`. 
 
 Tests are meant to be executed with: 
 ```sh
 npm run test or npm run test:ci
+```
+
+#### e2e tests 
+
+e2e tests can be started using `npm run test:e2e` command, which shall yield
+```
+[WebServer] Listening on port 9000
+  pw:webserver HTTP GET: http://127.0.0.1:9000/_healthcheck +1s
+  pw:webserver HTTP Status: 200 +12ms
+  pw:webserver WebServer available +1ms
+
+Running 1 test using 1 worker
+
+  ✓  1 [chromium] › trackApi.e2e.spec.ts:4:1 › get tracks by for Calvin Harris (56ms)
+[WebServer] 2024-01-05T08:58:00.532Z [info]: getTrackByNameAndArtist: name: Summer artistName: Calvin Harris
+[WebServer] POST /graphql 200 12.119 ms - 464
+[
+  {
+    id: 2,
+    createdAt: '2024-01-05T08:40:16.104Z',
+    updatedAt: '2024-01-05T08:40:16.104Z',
+    name: 'Summer',
+    artistName: 'Calvin Harris',
+    duration: 222533,
+    isrc: 'GBARL1400296',
+    releaseDate: '2014-10-31'
+  },
+  {
+    id: 3,
+    createdAt: '2024-01-05T08:40:16.104Z',
+    updatedAt: '2024-01-05T08:40:16.104Z',
+    name: 'Summer - Diplo & Grandtheft Remix',
+    artistName: 'Calvin Harris',
+    duration: 267253,
+    isrc: 'GBARL1400811',
+    releaseDate: '2014-06-20'
+  }
+]
+
+  1 passed (2.3s)
 ```
 
 ## Running locally
