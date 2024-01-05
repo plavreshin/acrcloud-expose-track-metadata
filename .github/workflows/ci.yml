@@ -90,8 +90,11 @@ jobs:
       - name: Install dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Env file
+        run: |
+          touch .env
+          echo SECRET_KEY="secret" >> .env
+          echo ARC_CLOUD_TOKEN=${{ secrets.ARC_CLOUD_TOKEN }} >> .env
+          cat .env
       - name: Build
-        env:
-          ARC_CLOUD_TOKEN: ${{ secrets.ARC_CLOUD_TOKEN }}
-          SECRET_KEY: secret
         run: npm run test:e2e
