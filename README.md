@@ -73,6 +73,9 @@ curl --request POST \
 
 ### High-level overview
 
+This is a sample implementation of an ACRCloud client and GrapQL API that offers music tracks lookup by artist and track name. 
+The implementation follows Apollo team guidelines to implement GraphQL API as well as uses codegen to produce valid types and resolvers. 
+
 
 ### Stack used
 
@@ -86,7 +89,7 @@ curl --request POST \
 There is
 - single unit spec `src/service/client/arcCloudClient.spec.ts`
 - single integration spec `__tests__/trackApi.integration.spec.ts`
-- single e2e spec ``
+- single e2e spec `e2e/trackApi.e2e.spec.ts`
 
 The goal is to capture implemented resolvers snapshots as baseline hence jest snapshots are used there, see `__tests__/__snapshots__/trackApi.integration.spec.ts.snap`. 
 
