@@ -52,13 +52,15 @@ export class TrackService {
           log.info(`Found ${JSON.stringify(tracksMetadata)} tracks for name ${name}`);
           const createTracks = tracksMetadata.reduce((acc, item) => {
             for (const artist of item.artists) {
-              acc.push({
-                name: item.name,
-                artistName: artist.name,
-                duration: item.duration_ms,
-                isrc: item.isrc,
-                releaseDate: String(item.album.release_date),
-              });
+              if (artist.name === artistName) {
+                acc.push({
+                  name: item.name,
+                  artistName: artist.name,
+                  duration: item.duration_ms,
+                  isrc: item.isrc,
+                  releaseDate: String(item.album.release_date),
+                });
+              }
             }
             return acc;
           }, [] as CreateTrack[]);
